@@ -46,6 +46,11 @@ function generateWebpackConfigForCanister(name, info) {
     resolve: {
       alias: aliases,
     },
+    module: {
+      rules: [
+        { test: /\.(js|ts)x?$/, loader: "ts-loader" }
+      ]
+    },  
     output: {
       filename: "index.js",
       path: path.join(outputRoot, "assets"),
