@@ -6,32 +6,53 @@ class Phonebook extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'Default',
-      message: '',
     };
   }
 
-  async doGreet() {
-    const greeting = await phonebook.greet(this.state.name);
-    this.setState({ ...this.state, message: greeting });
+  async doInsert() {
+    let name = document.getElementById("newEntryName").value;
+    let desc = document.getElementById("newEntryDesc").value;
+    let phone = document.getElementById("newEntryPhone").value;
+
+    phonebook.insert(name, desc, parseInt(phone, 10));
   }
 
-  onNameChange(ev) {
-    this.setState({ ...this.state, name: ev.target.value });
+  async lookup() {
+    let name = document.getElementById("lookupName").value;
+    phonebook.lookup(name).then(opt_entry => {
+      let [entry] = opt_entry;
+      if (entry === null) {
+        entry = { name: "", description: "", phone: ""};
+      }
+      document.getElementById("newEntryName").value = entry.name;
+      document.getElementById("newEntryDesc").value = entry.description;
+      document.getElementById("newEntryPhone").value = entry.phone.toString();
+    });
   }
 
   render() {
     return (
       <div>
+        <h1>PhoneBook</h1>
         <div>
-          Greetings, DFINITY-ite. Type in your name:
-          <input id="name" value={this.state.name} onChange={ev => this.onNameChange(ev)}></input>
-          <button onClick={() => this.doGreet()}>Click Button Get Greeting!</button>
+          Insert or update new phonebook entry:
+          <table>
+            <tr><td>Name:</td><td><input id="newEntryName"></input></td></tr>
+            <tr><td>Description:</td><td><input id="newEntryDesc"></input></td></tr>
+            <tr><td>Phone:</td><td><input id="newEntryPhone" type="number"></input></td></tr>
+          </table>
+          <button onClick={() => this.doInsert()}>Insert or Update</button>
+        </div> 
+        <div>
+          Lookup Name: <input id="lookupName"></input> <button onClick={
+            () => this.lookup()
+          }>Lookup</button>
         </div>
-        <div>Greeting is: "<span style={{ "color": "blue" }}>{this.state.message}</span>"</div>
       </div>
     );
   }
 }
+
+document.title = "DFINITY PHONEBOOK EXAMPLE";
 
 render(<Phonebook />, document.getElementById('app'));
