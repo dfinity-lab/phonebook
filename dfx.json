@@ -2,7 +2,7 @@
   "canisters": {
     "phonebook": {
       "frontend": {
-        "entrypoint": "src/phonebook/public/index.js"
+        "entrypoint": "src/phonebook/public/index.jsx"
       },
       "main": "src/phonebook/main.mo"
     }
