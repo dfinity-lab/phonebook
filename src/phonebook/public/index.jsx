@@ -21,8 +21,10 @@ class Phonebook extends React.Component {
     let name = document.getElementById("lookupName").value;
     phonebook.lookup(name).then(opt_entry => {
       let [entry] = opt_entry;
-      if (entry === null) {
+      if (entry.length == 0) {
         entry = { name: "", description: "", phone: ""};
+      } else {
+        entry = entry[0]
       }
       document.getElementById("newEntryName").value = entry.name;
       document.getElementById("newEntryDesc").value = entry.description;
@@ -42,7 +44,7 @@ class Phonebook extends React.Component {
             <tr><td>Phone:</td><td><input id="newEntryPhone" type="number"></input></td></tr>
           </table>
           <button onClick={() => this.doInsert()}>Insert or Update</button>
-        </div> 
+        </div>
         <div>
           Lookup Name: <input id="lookupName"></input> <button onClick={
             () => this.lookup()

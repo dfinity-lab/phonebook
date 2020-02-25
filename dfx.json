@@ -17,6 +17,6 @@
       "serve_root": "canisters/phonebook/assets"
     }
   },
-  "dfx": "0.4.13",
+  "dfx": "0.5.2",
   "version": 1
 }
