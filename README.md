@@ -6,9 +6,9 @@ To get started, you might want to explore the project directory structure and th
 
 To learn more before you start working with phonebook, see the following documentation available online:
 
-- [Quick Start](https://sdk.dfinity.org/developers-guide/quickstart.html)
-- [Developer's Guide](https://sdk.dfinity.org/developers-guide)
-- [Language Reference](https://sdk.dfinity.org/language-guide)
+- [Quick Start](https://sdk.dfinity.org/docs/quickstart/quickstart.html)
+- [Developer's Guide](https://sdk.dfinity.org/docs/developers-guide)
+- [Language Reference](https://sdk.dfinity.org/docs/language-guide)
 
 If you want to start working on your project right away, you might want to try the following commands:
 
